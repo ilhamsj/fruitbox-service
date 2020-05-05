@@ -15,6 +15,9 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-Route::get('product', function () {
-    return response()->json('hi semuanya selamat datang di lumen dan heroku');
+$router->get('product', function () {
+    return response()->json([
+        'app' => 'lumen',
+        'status' => 'on production'
+    ]);
 });
