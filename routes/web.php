@@ -15,4 +15,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('posts', 'PostController@index');
+$router->get('api/v1/posts', 'PostController@index');
+$router->post('api/v1/posts', 'PostController@store');
+$router->get('api/v1/posts/{id}', 'PostController@show');
+$router->put('api/v1/posts/{id}', 'PostController@update');
+$router->delete('api/v1/posts/{id}', 'PostController@destroy');
