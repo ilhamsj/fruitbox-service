@@ -15,9 +15,4 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('product', function () {
-    return response()->json([
-        'app' => 'lumen',
-        'status' => 'on production'
-    ]);
-});
+$router->get('posts', 'PostController@index');
