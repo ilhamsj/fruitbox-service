@@ -15,8 +15,12 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('api/v1/posts', 'PostController@index');
-$router->post('api/v1/posts', 'PostController@store');
-$router->get('api/v1/posts/{id}', 'PostController@show');
-$router->put('api/v1/posts/{id}', 'PostController@update');
-$router->delete('api/v1/posts/{id}', 'PostController@destroy');
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router) {
+        $router->get('posts', 'PostController@index');
+        $router->post('posts', 'PostController@store');
+        $router->get('posts/{id}', 'PostController@show');
+        $router->put('posts/{id}', 'PostController@update');
+        $router->delete('posts/{id}', 'PostController@destroy');
+    });
+});
