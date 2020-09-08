@@ -17,10 +17,12 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router) {
-        $router->get('posts', 'PostController@index');
-        $router->post('posts', 'PostController@store');
-        $router->get('posts/{id}', 'PostController@show');
-        $router->put('posts/{id}', 'PostController@update');
-        $router->delete('posts/{id}', 'PostController@destroy');
+        $router->group(['prefix' => 'posts'], function ($router) {
+            $router->get('/', 'PostController@index');
+            $router->post('/', 'PostController@store');
+            $router->get('/{id}', 'PostController@show');
+            $router->put('/{id}', 'PostController@update');
+            $router->delete('/{id}', 'PostController@destroy');
+        });
     });
 });
