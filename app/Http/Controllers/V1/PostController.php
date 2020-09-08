@@ -18,7 +18,7 @@ class PostController extends Controller
     
     public function index()
     {
-        $posts = $this->posts->all();
+        $posts = $this->posts->getAll();
         return $this->responseWithCondition($posts, 'Data successfully retrieved', 'Failed to retrieve data');
     }
 
@@ -28,8 +28,8 @@ class PostController extends Controller
             'title' => 'required|min:10',
             'description' => 'required:15',
         ]);
-
-        $post = $this->posts->store($request->all());
+        
+        $post = $this->posts->saveData($request);
         return $this->responseWithCondition($post, 'Data successfully stored', 'Failed to store data');
     }
 
