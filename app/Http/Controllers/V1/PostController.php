@@ -24,10 +24,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|min:10',
-            'description' => 'required:15',
-        ]);
+        $this->validate($request, $this->posts->getValidationRules());
         
         $post = $this->posts->saveData($request);
         return $this->responseWithCondition($post, 'Data successfully stored', 'Failed to store data');
@@ -41,13 +38,8 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required|min:10',
-            'description' => 'required:15',
-        ]);
-        
-        $post = $this->posts->find($id);
-        $post_update = $post->update($request->all());
+        $this->validate($request, $this->posts->getValidationRules());
+        $post_update = $this->posts->updateData($id, $request);
 
         return $this->responseWithCondition($post_update, 'Data successfully updated', 'Failed to update data');
     }
