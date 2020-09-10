@@ -18,7 +18,7 @@ class PostController extends Controller
     
     public function index()
     {
-        $posts = $this->posts->getAll();
+        $posts = $this->posts->all();
         return $this->responseWithCondition($posts, 'Data successfully retrieved', 'Failed to retrieve data');
     }
 
@@ -26,7 +26,7 @@ class PostController extends Controller
     {
         $this->validate($request, $this->posts->getValidationRules());
         
-        $post = $this->posts->saveData($request);
+        $post = $this->posts->create($request->all());
         return $this->responseWithCondition($post, 'Data successfully stored', 'Failed to store data');
     }
 
@@ -38,8 +38,7 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, $this->posts->getValidationRules());
-        $post_update = $this->posts->updateData($id, $request);
+        $post_update = $this->posts->updateData($request, $id);
 
         return $this->responseWithCondition($post_update, 'Data successfully updated', 'Failed to update data');
     }
