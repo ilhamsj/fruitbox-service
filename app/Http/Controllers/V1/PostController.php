@@ -14,6 +14,7 @@ class PostController extends Controller
     public function __construct(Post $post)
     {
         $this->posts = $post;
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
     
     public function index()

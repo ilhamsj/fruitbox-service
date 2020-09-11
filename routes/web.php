@@ -28,5 +28,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->group(['prefix' => 'users'], function ($router) {
             $router->get('/', 'UserController@index');
         });
+        $router->group(['prefix' => 'auth'], function ($router) {
+            $router->post('/register', 'AuthController@Register');
+            $router->post('/login', 'AuthController@Login');
+        });
     });
 });
