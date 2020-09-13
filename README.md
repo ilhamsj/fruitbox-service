@@ -1,24 +1,11 @@
-# Lumen PHP Framework
+https://dev.farizdotid.com/api/daerahindonesia/provinsi
+https://dev.farizdotid.com/api/daerahindonesia/provinsi/32
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=32
+https://dev.farizdotid.com/api/daerahindonesia/kota/3201
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=3214
+https://dev.farizdotid.com/api/daerahindonesia/kecamatan/3214080
 
-## Official Documentation
-
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=3214010
+https://dev.farizdotid.com/api/daerahindonesia/kelurahan/3214010006
