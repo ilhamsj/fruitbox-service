@@ -8,4 +8,4 @@ https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=3214
 https://dev.farizdotid.com/api/daerahindonesia/kecamatan/3214080
 
 https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=3214010
-https://dev.farizdotid.com/api/daerahindonesia/kelurahan/3214010006
+https://dev.farizdotid.com/api/daerahindonesia/kelurahan/3214010006 

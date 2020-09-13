@@ -13,17 +13,17 @@ class Products extends Migration
      */
     public function up()
     {
-        Schema::xcreate('products', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('description');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('brand_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->string('name');
+            $table->string('description');
             $table->string('price');
             $table->string('unit');
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 

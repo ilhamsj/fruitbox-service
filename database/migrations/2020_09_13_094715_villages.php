@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class User extends Migration
+class Villages extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class User extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('villages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->unsignedBigInteger('district_id');
+            $table->foreign('district_id')->references('id')->on('districts');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class User extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('villages');
     }
 }
