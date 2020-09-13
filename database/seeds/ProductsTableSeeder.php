@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class MerchantsTableSeeder extends Seeder
+class ProductsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class MerchantsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Merchant::class, 10)->create();
+        factory(App\Models\Product::class, 5)->create();
     }
 }

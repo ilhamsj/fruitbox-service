@@ -12,6 +12,5 @@ class BrandsTableSeeder extends Seeder
     public function run()
     {
         factory(App\Models\Brand::class, 5)->create();
-        factory(App\Models\Store::class, 5)->create();
     }
 }

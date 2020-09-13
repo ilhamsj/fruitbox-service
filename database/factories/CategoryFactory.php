@@ -15,11 +15,10 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Models\Store::class, function (Faker $faker) {
+$factory->define(App\Models\Category::class, function (Faker $faker) {
     return [
-        'merchant_id' => rand(1,10),
-        'village_id' => 3403010007,
-        'name' => $faker->company,
-        'address' => $faker->address,
+        'name' => $faker->word,
+        'description' => $faker->text(200),
+        'image' => 'http://lorempixel.com/64/48/',
     ];
 });

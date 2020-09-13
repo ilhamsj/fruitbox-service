@@ -17,8 +17,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Stock::class, function (Faker $faker) {
     return [
-        'name' => $faker->company,
-        'description' => $faker->text(200),
-        'logo' => 'http://lorempixel.com/64/48/',
+        'product_id' => $faker->numberBetween(1, 5),
+        'store_id' => $faker->numberBetween(1, 5),
+        'quantity' => rand(10, 50),
     ];
 });

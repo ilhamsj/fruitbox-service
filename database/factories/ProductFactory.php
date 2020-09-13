@@ -15,11 +15,13 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Models\Store::class, function (Faker $faker) {
+$factory->define(App\Models\Product::class, function (Faker $faker) {
     return [
-        'merchant_id' => rand(1,10),
-        'village_id' => 3403010007,
-        'name' => $faker->company,
-        'address' => $faker->address,
+        'category_id' => rand(1, 5),
+        'brand_id' => rand(1, 5),
+        'name' => $faker->domainWord,
+        'description' => $faker->text(200),
+        'price' => rand(1, 10),
+        'unit' => rand(1, 10),
     ];
 });
