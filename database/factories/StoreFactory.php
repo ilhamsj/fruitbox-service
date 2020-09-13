@@ -18,7 +18,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\Store::class, function (Faker $faker) {
     return [
         'merchant_id' => rand(1,10),
-        'village_id' => 3403010007,
+        'village_id' => rand(3403010007, 3403010011),
         'name' => $faker->company,
         'address' => $faker->address,
     ];

@@ -18,7 +18,7 @@ use App\Models\UserAddress;
 
 $factory->define(UserAddress::class, function (Faker $faker) {
     return [
-        'user_id' => rand(1, 5),
+        'user_id' => rand(1, 10),
         'village_id' => rand(3403010006, 3403010011),
         'name' => $faker->word,
         'address' => $faker->address,

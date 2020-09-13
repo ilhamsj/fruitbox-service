@@ -17,11 +17,11 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Product::class, function (Faker $faker) {
     return [
-        'category_id' => rand(1, 5),
-        'brand_id' => rand(1, 5),
-        'name' => $faker->domainWord,
+        'category_id' => rand(1, 10),
+        'brand_id' => rand(1, 10),
+        'name' => $faker->word,
         'description' => $faker->text(200),
         'price' => rand(1, 10),
-        'unit' => rand(1, 10),
+        'unit' => $faker->randomElement(['Kilogram', 'Piece', 'Gram', 'Bundle', 'Pax', 'Lusin']),
     ];
 });
