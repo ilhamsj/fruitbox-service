@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Traits\JsonResponse;
 
 class AuthController extends Controller
 {
+    use JsonResponse;
+
     public function __construct(User $user)
     {
         $this->user = $user;
@@ -22,28 +26,20 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-
-        //validate incoming request 
         $this->validate($request, [
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required',
         ]);
         
-        try {
-            $user = new User;
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
-            $plainPassword = $request->input('password');
-            $user->password = app('hash')->make($plainPassword);
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $plainPassword = $request->input('password');
+        $user->password = app('hash')->make($plainPassword);
+        $user->save();
 
-            $user->save();
-
-            return response()->json(['user' => $user, 'message' => 'CREATED'], 201);
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'User Registration Failed!'], 409);
-        }
-
+        return $this->responseWithCondition($user, 'User successfully registered', 'Failed to register user');
     }
 
 

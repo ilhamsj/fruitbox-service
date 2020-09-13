@@ -53,4 +53,15 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $data = $this->find($id);
         return $data ? $data->update($request->all()) : false;
     }
+
+    public function storeData($request) {
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $plainPassword = $request->input('password');
+        $user->password = app('hash')->make($plainPassword);
+
+        $user = $user->save();
+        return $user;
+    }
 }
