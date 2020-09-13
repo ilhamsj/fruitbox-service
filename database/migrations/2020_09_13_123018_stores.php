@@ -15,12 +15,12 @@ class Stores extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('merchant_id');
             $table->bigInteger('village_id');
             $table->string('name');
             $table->string('address');
-            $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('village_id')->references('id')->on('villages');
+            $table->foreign('merchant_id')->references('id')->on('merchants');
             $table->timestamps();
         });
     }

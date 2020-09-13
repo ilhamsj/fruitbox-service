@@ -15,12 +15,12 @@ class UserAddresses extends Migration
     {
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('village_id');
             $table->unsignedBigInteger('user_id');
+            $table->bigInteger('village_id');
             $table->string('name');
             $table->string('address');
-            $table->foreign('village_id')->references('id')->on('villages');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('village_id')->references('id')->on('villages');
             $table->timestamps();
         });
     }
