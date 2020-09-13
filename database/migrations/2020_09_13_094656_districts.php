@@ -14,9 +14,10 @@ class Districts extends Migration
     public function up()
     {
         Schema::create('districts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigInteger('id');
+            $table->primary('id');
             $table->string('name');
-            $table->unsignedBigInteger('city_id');
+            $table->bigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
         });

@@ -14,9 +14,10 @@ class Province extends Migration
     public function up()
     {
         Schema::create('provinces', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigInteger('id');
+            $table->primary('id');
             $table->string('name');
-            $table->unsignedBigInteger('country_id');
+            $table->bigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->timestamps();
         });

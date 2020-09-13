@@ -14,9 +14,10 @@ class Villages extends Migration
     public function up()
     {
         Schema::create('villages', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigInteger('id');
+            $table->primary('id');
             $table->string('name');
-            $table->unsignedBigInteger('district_id');
+            $table->bigInteger('district_id');
             $table->foreign('district_id')->references('id')->on('districts');
             $table->timestamps();
         });

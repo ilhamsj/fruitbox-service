@@ -14,9 +14,10 @@ class Cities extends Migration
     public function up()
     {
         Schema::create('cities', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigInteger('id');
+            $table->primary('id');
             $table->string('name');
-            $table->unsignedBigInteger('province_id');
+            $table->bigInteger('province_id');
             $table->foreign('province_id')->references('id')->on('provinces');
             $table->timestamps();
         });
