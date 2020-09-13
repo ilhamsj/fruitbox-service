@@ -19,8 +19,12 @@ class Product extends Model
 
     public function getValidationRules() {
         return [
-            'title' => 'required|min:10',
-            'description' => 'required|min:15',
+            'category_id' => 'required',
+            'brand_id' => 'required',
+            'name' => 'required|min:10|max:100',
+            'description' => 'required|min:30',
+            'price' => 'required|integer',
+            'unit' => 'required|string',
         ];
     }
 
