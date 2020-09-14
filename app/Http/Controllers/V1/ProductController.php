@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource as Resource;
 use App\Models\Product;
 use App\Traits\JsonResponse;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class ProductController extends Controller
     
     public function index()
     {
-        $products = $this->products->all();
+        $products = Resource::collection($this->products->all());
         return $this->responseWithCondition($products, 'Data successfully retrieved', 'Failed to retrieve data');
     }
 
@@ -33,7 +34,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $products = $this->products->find($id);
+        $products = new Resource($this->products->find($id));
         return $this->responseWithCondition($products, 'Data successfully retrieved', 'Failed to retrieve data');
     }
 

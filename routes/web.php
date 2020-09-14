@@ -39,5 +39,19 @@ $router->group(['prefix' => 'api'], function () use ($router) {
             $router->put('/{id}', 'ProductController@update');
             $router->delete('/{id}', 'ProductController@destroy');
         });
+        $router->group(['prefix' => 'categories'], function ($router) {
+            $router->get('/', 'CategoryController@index');
+            $router->post('/', 'CategoryController@store');
+            $router->get('/{id}', 'CategoryController@show');
+            $router->put('/{id}', 'CategoryController@update');
+            $router->delete('/{id}', 'CategoryController@destroy');
+        });
+        $router->group(['prefix' => 'brands'], function ($router) {
+            $router->get('/', 'BrandController@index');
+            $router->post('/', 'BrandController@store');
+            $router->get('/{id}', 'BrandController@show');
+            $router->put('/{id}', 'BrandController@update');
+            $router->delete('/{id}', 'BrandController@destroy');
+        });
     });
 });
