@@ -26,4 +26,14 @@ class Store extends Model
         $data = $this->find($id);
         return $data ? $data->update($request->all()) : false;
     }
+
+    public function merchant()
+    {
+        return $this->belongsTo(Merchant::class, 'merchant_id');
+    }
+
+    public function village()
+    {
+        return $this->belongsTo(Village::class, 'village_id');
+    }
  }

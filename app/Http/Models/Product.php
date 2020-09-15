@@ -54,6 +54,6 @@ class Product extends Model
         foreach ($this->stocks as $key => $value) {
             $total = $value->quantity + $total;
         }
-        return $total ? $total : 'Kosong';
+        return $total ? $total : 'Habis';
     }
  }

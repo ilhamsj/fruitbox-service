@@ -21,4 +21,9 @@ class Province extends Model
     protected $hidden = [
         'created_at','updated_at'
     ];
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
 }
