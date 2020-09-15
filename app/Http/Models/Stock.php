@@ -25,4 +25,9 @@ class Stock extends Model
         $data = $this->find($id);
         return $data ? $data->update($request->all()) : false;
     }
+
+    public function store()
+    {
+        return $this->belongsTo(Store::class, 'store_id');
+    }
  }

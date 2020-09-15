@@ -45,6 +45,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
             $router->get('/{id}', 'CategoryController@show');
             $router->put('/{id}', 'CategoryController@update');
             $router->delete('/{id}', 'CategoryController@destroy');
+            $router->group(['prefix' => 'products'], function ($router) {
+                $router->get('/', 'CategoryController@withProduct');
+            });    
         });
         $router->group(['prefix' => 'brands'], function ($router) {
             $router->get('/', 'BrandController@index');

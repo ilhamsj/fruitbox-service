@@ -42,4 +42,18 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class, 'brand_id');
     }
+
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class, 'product_id');
+    }
+
+    public function stockTotal()
+    {
+        $total = 0;
+        foreach ($this->stocks as $key => $value) {
+            $total = $value->quantity + $total;
+        }
+        return $total ? $total : 'Kosong';
+    }
  }

@@ -25,4 +25,9 @@ class Category extends Model
         $data = $this->find($id);
         return $data ? $data->update($request->all()) : false;
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id');
+    }
  }
