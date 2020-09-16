@@ -20,7 +20,7 @@ $factory->define(App\Models\Product::class, function (Faker $faker) {
         'category_id' => rand(1, 10),
         'brand_id' => rand(1, 10),
         'name' => $faker->word,
-        'description' => $faker->text(200),
+        'description' => $faker->text(150),
         'price' => rand(1, 10),
         'unit' => $faker->randomElement(['Kilogram', 'Piece', 'Gram', 'Bundle', 'Pax', 'Lusin']),
     ];

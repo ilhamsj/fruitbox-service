@@ -18,7 +18,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\Brand::class, function (Faker $faker) {
     return [
         'name' => $faker->company,
-        'description' => $faker->text(200),
+        'description' => $faker->text(150),
         'logo' => 'http://lorempixel.com/64/48/',
     ];
 });

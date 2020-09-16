@@ -23,11 +23,11 @@ class Orders extends Migration
             $table->string('user_address');
             $table->string('store_phone');
             $table->string('delivery_cost');
-            $table->string('delivered_date');
             $table->string('subtotal');
             $table->string('total');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('store_id')->references('id')->on('stores');
+            $table->timestamp('delivered_at');
             $table->timestamps();
         });
     }
