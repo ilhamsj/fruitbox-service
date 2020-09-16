@@ -16,8 +16,9 @@ class Category extends Model
 
     public function getValidationRules() {
         return [
-            'title' => 'required|min:10',
-            'description' => 'required|min:15',
+            'name' => 'required',
+            'description' => 'required',
+            'image' => 'required',
         ];
     }
 

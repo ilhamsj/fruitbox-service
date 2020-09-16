@@ -16,15 +16,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) {
-    $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router) {
-        $router->group(['prefix' => 'posts'], function ($router) {
-            $router->get('/', 'PostController@index');
-            $router->post('/', 'PostController@store');
-            $router->get('/{id}', 'PostController@show');
-            $router->put('/{id}', 'PostController@update');
-            $router->delete('/{id}', 'PostController@destroy');
-        });
-
+    $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router) {        
         $router->group(['prefix' => 'users'], function ($router) {
             $router->get('/', 'UserController@index');
         });
@@ -32,6 +24,14 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->group(['prefix' => 'auth'], function ($router) {
             $router->post('/register', 'AuthController@Register');
             $router->post('/login', 'AuthController@Login');
+        });
+
+        $router->group(['prefix' => 'posts'], function ($router) {
+            $router->get('/', 'PostController@index');
+            $router->post('/', 'PostController@store');
+            $router->get('/{id}', 'PostController@show');
+            $router->put('/{id}', 'PostController@update');
+            $router->delete('/{id}', 'PostController@destroy');
         });
 
         $router->group(['prefix' => 'products'], function ($router) {
