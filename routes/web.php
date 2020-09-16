@@ -28,10 +28,12 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->group(['prefix' => 'users'], function ($router) {
             $router->get('/', 'UserController@index');
         });
+
         $router->group(['prefix' => 'auth'], function ($router) {
             $router->post('/register', 'AuthController@Register');
             $router->post('/login', 'AuthController@Login');
         });
+
         $router->group(['prefix' => 'products'], function ($router) {
             $router->get('/', 'ProductController@index');
             $router->post('/', 'ProductController@store');
@@ -39,16 +41,15 @@ $router->group(['prefix' => 'api'], function () use ($router) {
             $router->put('/{id}', 'ProductController@update');
             $router->delete('/{id}', 'ProductController@destroy');
         });
+
         $router->group(['prefix' => 'categories'], function ($router) {
             $router->get('/', 'CategoryController@index');
             $router->post('/', 'CategoryController@store');
             $router->get('/{id}', 'CategoryController@show');
             $router->put('/{id}', 'CategoryController@update');
-            $router->delete('/{id}', 'CategoryController@destroy');
-            $router->group(['prefix' => 'products'], function ($router) {
-                $router->get('/', 'CategoryController@withProduct');
-            });    
+            $router->delete('/{id}', 'CategoryController@destroy');    
         });
+        
         $router->group(['prefix' => 'brands'], function ($router) {
             $router->get('/', 'BrandController@index');
             $router->post('/', 'BrandController@store');
