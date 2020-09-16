@@ -10,6 +10,8 @@ class UserResource extends JsonResource
         return [
             'title' => $this->title,
             'description' => $this->description,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
         ];
     }
 }

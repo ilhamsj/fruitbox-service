@@ -11,14 +11,16 @@ class StoreResource extends JsonResource
             'id,' => $this->id,
             'name' => $this->name,
             'address' => $this->address,
+            'merchant_id' => $this->merchant,
+            'location' => [
+                'village' => $this->village->name,
+                'district' => $this->village->district->name,
+                'city' => $this->village->district->city->name,
+                'province' => $this->village->district->city->province->name,
+                'country' => $this->village->district->city->province->country->name,
+            ],
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'merchant_id' => $this->merchant,
-            'village' => $this->village->name,
-            'district' => $this->village->district->name,
-            'city' => $this->village->district->city->name,
-            'province' => $this->village->district->city->province->name,
-            'country' => $this->village->district->city->province->country->name,
         ];
     }
 }
