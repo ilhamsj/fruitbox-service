@@ -18,17 +18,17 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\Order::class, function (Faker $faker) {
     $cost = rand(10000, 300000);
     $subtotal = rand(100000, 3000000);
+    $order_status_id = rand(1, 4);
     return [
         'user_id' => rand(1, 10),
         'store_id' => rand(1, 10),
-        'status' => rand(1, 3),
+        'order_status_id' => $order_status_id,
         'payment_type' => 'COD',
         'user_phone' => $faker->phoneNumber,
         'user_address' => $faker->address,
         'store_phone' => $faker->phoneNumber,
         'delivery_cost' => $cost,
         'subtotal' => $subtotal,
-        'total' => $cost+$subtotal,
-        'delivered_at' => $faker->date('Y-m-d H:i:s'),
+        'total' => $cost + $subtotal,
     ];
 });

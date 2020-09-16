@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Belum bayar",
+        "type": "COD"
+    },
+    {
+        "id": 2,
+        "name": "Dikemas",
+        "type": "COD"
+    },
+    {
+        "id": 3,
+        "name": "Dikirim",
+        "type": "COD"
+    },
+    {
+        "id": 4,
+        "name": "Selesai",
+        "type": "COD"
+    }
+]

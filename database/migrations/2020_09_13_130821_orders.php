@@ -17,7 +17,7 @@ class Orders extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('store_id');
-            $table->string('status');
+            $table->unsignedBigInteger('order_status_id');
             $table->string('payment_type');
             $table->string('user_phone');
             $table->string('user_address');
@@ -25,10 +25,10 @@ class Orders extends Migration
             $table->string('delivery_cost');
             $table->string('subtotal');
             $table->string('total');
+            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('store_id')->references('id')->on('stores');
-            $table->timestamp('delivered_at');
-            $table->timestamps();
+            $table->foreign('order_status_id')->references('id')->on('order_statuses');
         });
     }
 
