@@ -4,6 +4,7 @@
 
 use Faker\Generator as Faker;
 use App\Models\UserAddress;
+use Illuminate\Support\Arr;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,15 @@ use App\Models\UserAddress;
 */
 
 $factory->define(UserAddress::class, function (Faker $faker) {
+    $users = App\User::all();
+    $user_id = Arr::pluck($users, 'id');
+    
+    $villages = App\Models\Village::all();
+    $village_id = Arr::pluck($villages, 'id');
+
     return [
-        'user_id' => rand(1, 10),
-        'village_id' => rand(3403010006, 3403010011),
+        'user_id' => $faker->randomElement($user_id),
+        'village_id' => $faker->randomElement($village_id),
         'name' => $faker->word,
         'address' => $faker->address,
     ];

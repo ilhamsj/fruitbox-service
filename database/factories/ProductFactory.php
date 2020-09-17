@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Arr;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,18 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\Product::class, function (Faker $faker) {
+    $category = App\Models\Category::all();
+    $brands = App\Models\Brand::all();
+
+    $category_id = Arr::pluck($category, 'id');
+    $brand_id = Arr::pluck($brands, 'id');
+
     return [
-        'category_id' => rand(1, 10),
-        'brand_id' => rand(1, 10),
+        'category_id' => $faker->randomElement($category_id),
+        'brand_id' => $faker->randomElement($brand_id),
         'name' => $faker->word,
         'description' => $faker->text(150),
-        'price' => rand(1, 10),
+        'price' => rand(10000, 100000),
         'unit' => $faker->randomElement(['Kilogram', 'Piece', 'Gram', 'Bundle', 'Pax', 'Lusin']),
     ];
 });

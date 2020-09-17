@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Arr;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +17,22 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\Order::class, function (Faker $faker) {
+    $users = App\User::all();
+    $user_id = Arr::pluck($users, 'id');
+    
+    $stores = App\Models\Store::all();
+    $store_id = Arr::pluck($stores, 'id');
+    
+    $order_statuses = App\Models\OrderStatus::all();
+    $order_status_id = Arr::pluck($order_statuses, 'id');
+
     $cost = rand(10000, 300000);
     $subtotal = rand(100000, 3000000);
-    $order_status_id = rand(1, 4);
+
     return [
-        'user_id' => rand(1, 10),
-        'store_id' => rand(1, 10),
-        'order_status_id' => $order_status_id,
+        'user_id' => $faker->randomElement($user_id),
+        'store_id' => $faker->randomElement($store_id),
+        'order_status_id' => $faker->randomElement($order_status_id),
         'payment_type' => 'COD',
         'user_phone' => $faker->phoneNumber,
         'user_address' => $faker->address,
