@@ -11,6 +11,8 @@
 |
 */
 
+use App\Admin;
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
@@ -65,5 +67,20 @@ $router->group(['prefix' => 'api'], function () use ($router) {
             $router->put('/{id}', 'OrderController@update');
             $router->delete('/{id}', 'OrderController@destroy');
         });
+
+        
+        $router->group(['prefix' => 'backyard'], function ($router) {
+            $router->group(['prefix' => 'auth'], function ($router) {
+                $router->post('/login', 'AdminAuthController@authenticate');
+                $router->post('/register', 'AdminAuthController@register');
+            });
+
+            $router->group(['middleware' => 'jwt.auth'], function ($router) {
+                $router->get('/', function () {
+                    return response()->json(Admin::all());
+                });
+            });
+        });
+
     });
 });
